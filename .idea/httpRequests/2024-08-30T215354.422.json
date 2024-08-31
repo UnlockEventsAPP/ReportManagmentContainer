@@ -1,0 +1,13 @@
+{
+  "detail": [
+    {
+      "type": "missing",
+      "loc": [
+        "query",
+        "admin_id"
+      ],
+      "msg": "Field required",
+      "input": null
+    }
+  ]
+}

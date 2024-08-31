@@ -1,0 +1,26 @@
+{
+  "detail": [
+    {
+      "type": "missing",
+      "loc": [
+        "body",
+        "Contenido"
+      ],
+      "msg": "Field required",
+      "input": {
+        "IdAdministrador": 1
+      }
+    },
+    {
+      "type": "missing",
+      "loc": [
+        "body",
+        "FechaGeneracion"
+      ],
+      "msg": "Field required",
+      "input": {
+        "IdAdministrador": 1
+      }
+    }
+  ]
+}

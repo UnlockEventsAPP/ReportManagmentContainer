@@ -1,0 +1,15 @@
+{
+  "detail": [
+    {
+      "type": "missing",
+      "loc": [
+        "body",
+        "FechaGeneracion"
+      ],
+      "msg": "Field required",
+      "input": {
+        "IdAdministrador": 1
+      }
+    }
+  ]
+}
