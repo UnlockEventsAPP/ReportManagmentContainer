@@ -1,8 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Response
 from sqlalchemy.orm import Session
 from database import get_db, db_name
 from crud import create_report, get_report
-from services.reports_generator import generate_report
+from services.reports_generator import generate_report, generate_in_temporal_memory, get_events_data, get_auth_data, \
+    get_accommodation_data, generate_excel, generate_specific_report
 from schemas import ReporteCreate, Reporte
 router = APIRouter()
 
@@ -22,3 +23,22 @@ def read_report_endpoint(reporte_id: int, db: Session = Depends(lambda: next(get
     if not db_report:
         raise HTTPException(status_code=404, detail="Reporte no encontrado")
     return db_report
+
+# Endpoint para generar y devolver el reporte en memoria
+@router.get("/download-report/accommodation/", response_class=Response)
+def download_accommodation_report(db: Session = Depends(lambda: get_db('reports_db'))):
+    excel_file = generate_specific_report(get_accommodation_data)
+    headers = {'Content-Disposition': 'attachment; filename="accommodation_report.xlsx"'}
+    return Response(content=excel_file.getvalue(), media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", headers=headers)
+
+@router.get("/download-report/auth/", response_class=Response)
+def download_auth_report(db: Session = Depends(lambda: get_db('reports_db'))):
+    excel_file = generate_specific_report(get_auth_data)
+    headers = {'Content-Disposition': 'attachment; filename="auth_report.xlsx"'}
+    return Response(content=excel_file.getvalue(), media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", headers=headers)
+
+@router.get("/download-report/events/", response_class=Response)
+def download_events_report(db: Session = Depends(lambda: get_db('reports_db'))):
+    excel_file = generate_specific_report(get_events_data)
+    headers = {'Content-Disposition': 'attachment; filename="events_report.xlsx"'}
+    return Response(content=excel_file.getvalue(), media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", headers=headers)

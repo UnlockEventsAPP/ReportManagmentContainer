@@ -1,3 +1,233 @@
+GET http://localhost:8000/api/reports/download-report/events/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> events_report.xlsx
+
+###
+
+GET http://localhost:8000/api/reports/download-report/auth/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> auth_report.xlsx
+
+###
+
+GET http://localhost:8000/api/reports/download-report/accommodation/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> accommodation_report.xlsx
+
+###
+
+GET http://localhost:8000/api/reports/download-report/accommodation/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T113706.500.txt
+
+###
+
+GET http://localhost:8000/api/reports/reportes/7
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T113253.200.json
+
+###
+
+GET http://localhost:8000/api/reports/download-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> report-1.xlsx
+
+###
+
+GET http://localhost:8000/api/reports/download-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T112908.422.json
+
+###
+
+GET http://localhost:8000/api/reports/reportes/7
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T112907.200.json
+
+###
+
+GET http://localhost:8000/api/reports/download-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T112858.422.json
+
+###
+
+GET http://localhost:8000/api/reports/download-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T112828.500.txt
+
+###
+
+GET http://localhost:8000/api/reports/reportes/7
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T112819.200.json
+
+###
+
+GET http://localhost:8000/api/reports/download-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T112751.500.txt
+
+###
+
+GET http://localhost:8000/api/reports/download-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T112739.500.txt
+
+###
+
+GET http://localhost:8000/api/reports/download-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T112717.422.json
+
+###
+
+GET http://localhost:8000/api/reports/download-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T112442.500.txt
+
+###
+
+GET http://localhost:8000/api/reports/download-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T112304.500.txt
+
+###
+
+GET http://localhost:8000/api/reports/download-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T112300.500.txt
+
+###
+
+GET http://localhost:8000/api/reports/download-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> report.xlsx
+
+###
+
+POST http://localhost:8000/api/reports/generate-report/?db_name=reports_db
+Content-Type: application/json
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "IdAdministrador": 1
+}
+
+<> 2024-08-31T111821.200.json
+
+###
+
+POST http://localhost:8000/api/reports/generate-report/?db_name=reports_db
+Content-Type: application/json
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "IdAdministrador": 1
+}
+
+<> 2024-08-31T110232.200.json
+
+###
+
+GET http://localhost:8000/api/reports/reportes/5
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T105858.200.json
+
+###
+
+GET http://localhost:8000/api/reports/reportes/1
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T105839.404.json
+
+###
+
 POST http://localhost:8000/api/reports/generate-report/?db_name=reports_db
 Content-Type: application/json
 Content-Length: 26

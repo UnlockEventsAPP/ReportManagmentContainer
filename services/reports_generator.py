@@ -6,6 +6,7 @@ from schemas import ReporteCreate
 from crud import create_report
 from io import BytesIO
 from sqlalchemy import text
+from pathlib import Path
 
 def generate_report(db: Session, admin_id: int) -> Reporte:
     # Obtener la información de las diferentes bases de datos
@@ -29,7 +30,7 @@ def generate_report(db: Session, admin_id: int) -> Reporte:
     db_reporte = create_report(db, new_report)
 
     # Generar un archivo Excel con la información
-    excel_file = generate_excel(accommodation_data, auth_data, events_data)
+    excel_file = generate_in_temporal_memory(accommodation_data, auth_data, events_data)
 
     return db_reporte
 
@@ -37,33 +38,56 @@ def generate_report(db: Session, admin_id: int) -> Reporte:
 
 def get_accommodation_data() -> str:
     db = next(get_db('accommodation_db'))
-    # Realiza la consulta para obtener los datos de la base de datos de alojamiento
     query = text("SELECT nombre, direccion FROM alojamientos")
     results = db.execute(query).fetchall()
-    db.close()  # Asegurarse de cerrar la conexión
+    db.close()
     return "\n".join([f"{row[0]} - {row[1]}" for row in results])
 
 def get_auth_data() -> str:
     db = next(get_db('auth_db'))
-    # Realiza la consulta para obtener los datos de la base de datos de autenticación
     query = text("SELECT nombre, email FROM usuarios")
     results = db.execute(query).fetchall()
-    db.close()  # Asegurarse de cerrar la conexión
+    db.close()
     return "\n".join([f"{row[0]} - {row[1]}" for row in results])
 
 def get_events_data() -> str:
     db = next(get_db('events_db'))
-    # Realiza la consulta para obtener los datos de la base de datos de eventos
     query = text("SELECT nombre, fecha_hora FROM eventos")
     results = db.execute(query).fetchall()
-    db.close()  # Asegurarse de cerrar la conexión
+    db.close()
     return "\n".join([f"{row[0]} - {row[1]}" for row in results])
 
 
-def generate_excel(accommodation_data: str, auth_data: str, events_data: str) -> BytesIO:
-    # Crear un archivo Excel con Pandas
+def generate_in_temporal_memory(accommodation_data: str, auth_data: str, events_data: str) -> BytesIO:
     output = BytesIO()
     writer = pd.ExcelWriter(output, engine='xlsxwriter')
+
+    # Manejo de diferentes columnas
+    def create_dataframe(data: str, columns: list) -> pd.DataFrame:
+        rows = [x.split(" - ") for x in data.split("\n") if " - " in x]
+        if not rows:  # Si no hay datos, crear un DataFrame vacío
+            return pd.DataFrame(columns=columns)
+        return pd.DataFrame(rows, columns=columns)
+
+    df_accommodation = create_dataframe(accommodation_data, ["Name", "Location"])
+    df_auth = create_dataframe(auth_data, ["Username", "Email"])
+    df_events = create_dataframe(events_data, ["Event Name", "Date"])
+
+    df_accommodation.to_excel(writer, sheet_name='Accommodation', index=False)
+    df_auth.to_excel(writer, sheet_name='Auth', index=False)
+    df_events.to_excel(writer, sheet_name='Events', index=False)
+
+    writer.close()
+    output.seek(0)
+    return output
+
+def generate_excel(accommodation_data: str, auth_data: str, events_data: str) -> str:
+    # Crear un archivo Excel con Pandas
+    output_dir = Path("reports")  # Directorio donde se guardará el archivo
+    output_dir.mkdir(exist_ok=True)  # Crea el directorio si no existe
+    file_path = output_dir / "report.xlsx"  # Ruta completa del archivo
+
+    writer = pd.ExcelWriter(file_path, engine='xlsxwriter')
 
     # Convertir los datos a DataFrame
     df_accommodation = pd.DataFrame([x.split(" - ") for x in accommodation_data.split("\n")],
@@ -76,8 +100,13 @@ def generate_excel(accommodation_data: str, auth_data: str, events_data: str) ->
     df_auth.to_excel(writer, sheet_name='Auth', index=False)
     df_events.to_excel(writer, sheet_name='Events', index=False)
 
-    # Cerrar el archivo Excel para guardar el contenido
+    # Guardar el archivo Excel
     writer.close()
-    output.seek(0)  # Volver al inicio del archivo para la lectura posterior
-    return output
 
+    return str(file_path)  # Retorna la ruta del archivo guardado
+
+def generate_specific_report(data_function: callable) -> BytesIO:
+
+    data = data_function()
+    excel_file = generate_in_temporal_memory(data, "", "")  # Solo utiliza el conjunto de datos específico
+    return excel_file
