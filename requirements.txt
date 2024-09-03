@@ -5,3 +5,4 @@ pymysql
 pandas
 python-dotenv
 xlsxwriter
+cryptography
