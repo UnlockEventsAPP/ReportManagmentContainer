@@ -3,13 +3,10 @@
     {
       "type": "missing",
       "loc": [
-        "body",
-        "FechaGeneracion"
+        "body"
       ],
       "msg": "Field required",
-      "input": {
-        "IdAdministrador": 1
-      }
+      "input": null
     }
   ]
 }

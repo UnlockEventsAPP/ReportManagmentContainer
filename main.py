@@ -9,7 +9,7 @@ def on_startup():
     # Crear tablas en la base de datos de reportes al iniciar la aplicación
     create_reports_tables()
 
-app.include_router(reports.router, prefix="/api/reports", tags=["Reports"])
+app.include_router(reports.router, prefix="/reports", tags=["Reports"])
 
 # Punto de prueba
 @app.get("/")

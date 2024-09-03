@@ -7,28 +7,36 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Cargar configuraciones de las bases de datos desde el archivo .env
-DB_USERNAME = os.getenv("DB_USERNAME")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
+URL = os.getenv("DB_URL")
+AURL = os.getenv("ACCOMMODATION_URL")
+AUURL = os.getenv("AUTH_DB")
+EVURL = os.getenv("EVENTS_DB")
+#DB_URL=mysql+pymysql://develop:1234@localhost:3306/reports_db
+#ACCOMMODATION_URL=mysql+pymysql://develop:1234@localhost:3306/accommodation_db
+#AUTH_DB=mysql+pymysql://develop:1234@localhost:3306/auth_db
+#EVENTS_DB=mysql+pymysql://develop:1234@localhost:3306/events_db
+
+
 
 # Conexiones para las bases de datos
 DATABASES = {
     'reports_db': {
-        'url': f"mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{os.getenv('DB_HOST1')}:{os.getenv('DB_PORT1')}/{os.getenv('DB_NAME_REPORTS')}",
+        'url': f"{URL}",
         'engine': None,
         'session': None
     },
     'accommodation_db': {
-        'url': f"mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{os.getenv('DB_HOST2')}:{os.getenv('DB_PORT2')}/{os.getenv('DB_NAME_ACCOMMODATION')}",
+        'url': f"{AURL}",
         'engine': None,
         'session': None
     },
     'auth_db': {
-        'url': f"mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{os.getenv('DB_HOST3')}:{os.getenv('DB_PORT3')}/{os.getenv('DB_NAME_AUTH')}",
+        'url': f"{AUURL}",
         'engine': None,
         'session': None
     },
     'events_db': {
-        'url': f"mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{os.getenv('DB_HOST3')}:{os.getenv('DB_PORT3')}/{os.getenv('DB_NAME_EVENTS')}",
+        'url': f"{EVURL}",
         'engine': None,
         'session': None
     }

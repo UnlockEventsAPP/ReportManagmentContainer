@@ -1,3 +1,133 @@
+GET http://localhost:8000/api/reports/download-report/accommodation/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> accommodation_report-1.xlsx
+
+###
+
+GET http://localhost:8000/api/reports/download-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T115825.404.json
+
+###
+
+GET http://localhost:8000/api/reports/reportes/9
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T115805.200.json
+
+###
+
+POST http://localhost:8000/api/reports/generate-report/
+Content-Type: application/json
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "IdAdministrador": 1
+}
+
+<> 2024-08-31T115747.200.json
+
+###
+
+POST http://localhost:8000/api/reports/generate-report/
+Content-Type: application/json
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "IdAdministrador": 1
+}
+
+<> 2024-08-31T115701.200.json
+
+###
+
+POST http://localhost:8000/api/reports/generate-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T115603.422.json
+
+###
+
+GET http://localhost:8000/api/reports/reportes/5
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T115536.404.json
+
+###
+
+POST http://localhost:8000/api/reports/generate-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T115510.422.json
+
+###
+
+POST http://localhost:8000/api/reports/generate-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T115422.422.json
+
+###
+
+GET http://localhost:8000/api/reports/reportes/7
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T115408.404.json
+
+###
+
+POST http://localhost:8000/api/reports/generate-report/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T115331.422.json
+
+###
+
+GET http://localhost:8000/api/reports/reportes/7
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-08-31T115313.404.json
+
+###
+
 GET http://localhost:8000/api/reports/download-report/events/
 User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
 Accept-Encoding: br, deflate, gzip, x-gzip
@@ -475,176 +605,6 @@ Accept: */*
 }
 
 <> 2024-08-30T220558.500.txt
-
-###
-
-POST http://localhost:8000/api/reports/generate-report/
-Content-Type: application/json
-Content-Length: 70
-User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "IdAdministrador": 1,
-  "FechaGeneracion": "2024-08-31T12:00:00"
-}
-
-<> 2024-08-30T220502.500.txt
-
-###
-
-POST http://localhost:8000/api/reports/generate-report/
-Content-Type: application/json
-Content-Length: 26
-User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "IdAdministrador": 1
-}
-
-<> 2024-08-30T220434.500.txt
-
-###
-
-POST http://localhost:8000/api/reports/generate-report/
-Content-Type: application/json
-Content-Length: 26
-User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "IdAdministrador": 1
-}
-
-<> 2024-08-30T220425.500.txt
-
-###
-
-POST http://localhost:8000/api/reports/generate-report/
-Content-Type: application/json
-Content-Length: 26
-User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "IdAdministrador": 1
-}
-
-<> 2024-08-30T220248.422.json
-
-###
-
-POST http://localhost:8000/api/reports/generate-report/
-Content-Type: application/json
-Content-Length: 104
-User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "IdAdministrador": 1,
-  "Contenido": "Example content",
-  "FechaGeneracion": "2024-08-31T12:00:00"
-}
-
-<> 2024-08-30T220242.500.txt
-
-###
-
-POST http://localhost:8000/api/reports/generate-report/
-Content-Type: application/json
-Content-Length: 26
-User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "IdAdministrador": 1
-}
-
-<> 2024-08-30T220137.422.json
-
-###
-
-POST http://localhost:8000/api/reports/generate-report/
-Content-Type: application/json
-Content-Length: 104
-User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "IdAdministrador": 1,
-  "Contenido": "Example content",
-  "FechaGeneracion": "2024-08-31T12:00:00"
-}
-
-<> 2024-08-30T220118.500.txt
-
-###
-
-POST http://localhost:8000/api/reports/generate-report/
-Content-Type: application/json
-Content-Length: 26
-User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "IdAdministrador": 1
-}
-
-<> 2024-08-30T215953.422.json
-
-###
-
-POST http://localhost:8000/api/reports/generate-report/
-Content-Type: application/json
-Content-Length: 26
-User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "IdAdministrador": 1
-}
-
-<> 2024-08-30T215716.422.json
-
-###
-
-POST http://localhost:8000/api/reports/generate-report/
-Content-Type: application/json
-Content-Length: 26
-User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "IdAdministrador": 1
-}
-
-<> 2024-08-30T215354.422.json
-
-###
-
-POST http://localhost:8000/api/reports/generate-report/
-Content-Type: application/json
-Content-Length: 26
-User-Agent: IntelliJ HTTP Client/PyCharm 2024.2.0.1
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "IdAdministrador": 1
-}
-
-<> 2024-08-30T214007.422.json
 
 ###
 
