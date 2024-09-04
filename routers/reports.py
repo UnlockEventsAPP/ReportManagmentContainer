@@ -1,18 +1,32 @@
-from fastapi import APIRouter, Depends, HTTPException, Response
+from fastapi import APIRouter, Depends, HTTPException, Response, BackgroundTasks
 from sqlalchemy.orm import Session
 from database import get_db, db_name
 from crud import create_report, get_report
 from services.reports_generator import generate_report, generate_in_temporal_memory, get_events_data, get_auth_data, \
     get_accommodation_data, generate_excel, generate_specific_report
 from schemas import ReporteCreate, Reporte
+from services.rabbit_connection import send_to_rabbitmq
 router = APIRouter()
+
 
 @router.post("/generate-report/", response_model=Reporte)
 def generate_report_endpoint(
-    report: ReporteCreate,
-    db: Session = Depends(lambda: next(get_db('reports_db')))
+        report: ReporteCreate,
+        background_tasks: BackgroundTasks,
+        db: Session = Depends(lambda: next(get_db('reports_db')))
 ):
     db_report = generate_report(db, report.IdAdministrador)
+
+    report_data = {
+        "report_id": db_report.IdReporte,
+        "admin_id": report.IdAdministrador,
+        "report_type": "general",
+        "content": db_report.Contenido
+    }
+
+    # Enviar a RabbitMQ en segundo plano
+    background_tasks.add_task(send_to_rabbitmq, report_data)
+
     return db_report
 
 
