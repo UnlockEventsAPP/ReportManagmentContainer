@@ -1,6 +1,7 @@
 fastapi
 uvicorn
 sqlalchemy
+aio_pika
 pymysql
 pandas
 python-dotenv

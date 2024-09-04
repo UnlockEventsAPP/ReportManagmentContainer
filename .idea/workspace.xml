@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd0fc9be-2e04-4938-9453-70c5b102fe06" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/services/rabbit_connection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/reports.py" afterDir="false" />
-    </list>
+    <list default="true" id="fd0fc9be-2e04-4938-9453-70c5b102fe06" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -120,7 +116,7 @@
       <workItem from="1725067139551" duration="5404000" />
       <workItem from="1725119854874" duration="7964000" />
       <workItem from="1725308167910" duration="8906000" />
-      <workItem from="1725409968679" duration="7226000" />
+      <workItem from="1725409968679" duration="7541000" />
     </task>
     <servers />
   </component>
