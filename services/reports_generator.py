@@ -35,13 +35,15 @@ def generate_report(db: Session, admin_id: int) -> Reporte:
     return db_reporte
 
 
-
 def get_accommodation_data() -> str:
     db = next(get_db('accommodation_db'))
-    query = text("SELECT nombre, direccion FROM alojamientos")
+    query = text("SELECT nombre, direccion, precio, status, imagen_url FROM alojamientos")
     results = db.execute(query).fetchall()
     db.close()
-    return "\n".join([f"{row[0]} - {row[1]}" for row in results])
+
+    print("Accommodation Data Fetched from DB:", results)  # Depuración
+    return "\n".join([f"{row[0]} - {row[1]} - {row[2]} - {row[3]} - {row[4]}" for row in results])
+
 
 def get_auth_data() -> str:
     db = next(get_db('auth_db'))
@@ -50,28 +52,33 @@ def get_auth_data() -> str:
     db.close()
     return "\n".join([f"{row[0]} - {row[1]}" for row in results])
 
+
 def get_events_data() -> str:
     db = next(get_db('events_db'))
-    query = text("SELECT nombre, fecha_hora FROM eventos")
+    query = text("SELECT nombre, fecha_hora, precio, status FROM eventos")
     results = db.execute(query).fetchall()
     db.close()
-    return "\n".join([f"{row[0]} - {row[1]}" for row in results])
 
+    # Asegurarse de que los valores sean cadenas y no nulos
+    return "\n".join([
+        f"{str(row[0])} - {str(row[1])} - {str(row[2])} - {str(row[3])}" for row in results
+    ])
 
 def generate_in_temporal_memory(accommodation_data: str, auth_data: str, events_data: str) -> BytesIO:
     output = BytesIO()
     writer = pd.ExcelWriter(output, engine='xlsxwriter')
 
-    # Manejo de diferentes columnas
     def create_dataframe(data: str, columns: list) -> pd.DataFrame:
+        # Divide las filas basadas en " - " y mapea las columnas correctamente
         rows = [x.split(" - ") for x in data.split("\n") if " - " in x]
         if not rows:  # Si no hay datos, crear un DataFrame vacío
             return pd.DataFrame(columns=columns)
         return pd.DataFrame(rows, columns=columns)
 
-    df_accommodation = create_dataframe(accommodation_data, ["Name", "Location"])
+    df_accommodation = create_dataframe(accommodation_data, ["Name", "Location", "Price", "Status", "Image URL"])
     df_auth = create_dataframe(auth_data, ["Username", "Email"])
-    df_events = create_dataframe(events_data, ["Event Name", "Date"])
+    print("Events Data:", events_data)
+    df_events = create_dataframe(events_data, ["Event Name", "Date", "Price", "Status"])
 
     df_accommodation.to_excel(writer, sheet_name='Accommodation', index=False)
     df_auth.to_excel(writer, sheet_name='Auth', index=False)
@@ -90,10 +97,15 @@ def generate_excel(accommodation_data: str, auth_data: str, events_data: str) ->
     writer = pd.ExcelWriter(file_path, engine='xlsxwriter')
 
     # Convertir los datos a DataFrame
-    df_accommodation = pd.DataFrame([x.split(" - ") for x in accommodation_data.split("\n")],
-                                    columns=["Name", "Location"])
+    df_accommodation = pd.DataFrame(
+        [x.split(" - ") for x in accommodation_data.split("\n")],
+        columns=["Name", "Location", "Price", "Status", "Image URL"]
+    )
     df_auth = pd.DataFrame([x.split(" - ") for x in auth_data.split("\n")], columns=["Username", "Email"])
-    df_events = pd.DataFrame([x.split(" - ") for x in events_data.split("\n")], columns=["Event Name", "Date"])
+    df_events = pd.DataFrame(
+        [x.split(" - ") for x in events_data.split("\n")],
+        columns=["Event Name", "Date", "Price", "Status"]
+    )
 
     # Escribir cada DataFrame en una hoja del Excel
     df_accommodation.to_excel(writer, sheet_name='Accommodation', index=False)
