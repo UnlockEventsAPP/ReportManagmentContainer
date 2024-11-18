@@ -37,7 +37,7 @@ def generate_report(db: Session, admin_id: int) -> Reporte:
 
 def get_accommodation_data() -> str:
     db = next(get_db('accommodation_db'))
-    query = text("SELECT nombre, direccion, precio, status, imagen_url FROM alojamientos")
+    query = text("SELECT nombre, direccion, precio, status, imagen_url FROM accommodation_db.alojamientos")
     results = db.execute(query).fetchall()
     db.close()
 
