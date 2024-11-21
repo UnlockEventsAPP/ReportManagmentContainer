@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 origins = [
-    "https://front-unlock-patrones.vercel.app/admin",  # Dominio de tu frontend
+    "https://front-unlock-patrones.vercel.app",  # Dominio de tu frontend
     "http://localhost:4200",  # Si estás probando en Angular localmente
 ]
 
